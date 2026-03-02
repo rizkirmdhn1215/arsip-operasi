@@ -109,9 +109,9 @@ export function FileViewer({ file, onClose, getSignedUrl, downloadFile }: FileVi
     return (
         <Dialog open={!!file} onOpenChange={(open) => { if (!open) onClose() }}>
             <DialogContent className="w-[95vw] max-w-[95vw] sm:max-w-[95vw] h-[95vh] max-h-[95vh] flex flex-col p-0 gap-0 overflow-hidden">
-                <DialogHeader className="px-6 py-4 border-b flex-shrink-0">
+                <DialogHeader className="px-6 py-4 border-b flex-shrink-0 bg-gradient-to-r from-[#1B3A6B]/5 to-transparent">
                     <div className="flex items-center justify-between">
-                        <DialogTitle className="flex items-center gap-2 text-base">
+                        <DialogTitle className="flex items-center gap-2 text-base text-[#1B3A6B]">
                             {getFileIcon()}
                             <span className="truncate max-w-md">{file?.name}</span>
                         </DialogTitle>
@@ -119,14 +119,14 @@ export function FileViewer({ file, onClose, getSignedUrl, downloadFile }: FileVi
                             onClick={handleDownload}
                             disabled={downloading}
                             size="sm"
-                            className="mr-8 flex-shrink-0"
+                            className="mr-8 flex-shrink-0 bg-[#F37021] hover:bg-[#d4611a] text-white"
                         >
                             {downloading ? (
                                 <Loader2 className="h-4 w-4 animate-spin mr-2" />
                             ) : (
                                 <Download className="h-4 w-4 mr-2" />
                             )}
-                            Download
+                            Unduh
                         </Button>
                     </div>
                 </DialogHeader>
@@ -134,8 +134,8 @@ export function FileViewer({ file, onClose, getSignedUrl, downloadFile }: FileVi
                 <div className="flex-1 overflow-auto min-h-0 h-full">
                     {viewerState.status === 'loading' && (
                         <div className="flex flex-col items-center justify-center h-full gap-3">
-                            <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
-                            <p className="text-sm text-muted-foreground">Loading file...</p>
+                            <Loader2 className="h-8 w-8 animate-spin text-[#F37021]" />
+                            <p className="text-sm text-muted-foreground">Memuat berkas...</p>
                         </div>
                     )}
 
@@ -144,7 +144,7 @@ export function FileViewer({ file, onClose, getSignedUrl, downloadFile }: FileVi
                             <AlertCircle className="h-8 w-8" />
                             <p className="text-sm">{viewerState.message}</p>
                             <Button variant="outline" size="sm" onClick={() => file && loadFile(file)}>
-                                Retry
+                                Coba Lagi
                             </Button>
                         </div>
                     )}
